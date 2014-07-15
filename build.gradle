@@ -17,4 +17,8 @@ repositories {
 
 dependencies {
   springloaded 'org.springsource.loaded:springloaded:1.1.5.RELEASE'
+  testCompile "org.spockframework:spock-core:0.7-groovy-2.0", {
+    exclude module: "groovy-all"
+  }
 }
+

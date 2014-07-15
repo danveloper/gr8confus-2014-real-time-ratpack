@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    background: #222;
+}
+
+.container {
+    background-color: #222;
+    min-height: 600px;
+    margin: 50px auto 0 auto;
+    width: 1200px;
+}
+
+.hidden {
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.logo {
+    background: url(images/hipster-ratpack.png) no-repeat;
+    height: 140px;
+    display: inline-block;
+    float: left;
+    width: 600px;
+}
+
+.ratpack-three {
+    background: url(images/ratpack-three.png) no-repeat;
+    height: 400px;
+    width: 300px;
+    display: inline-block;
+    float: right;
+}
+
+.controls {
+    height: 140px;
+    width: 300px;
+    float: left;
+}
+
+.btn {
+    display: inline-block;
+    width: 125px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    background-color: #4e718a;
+    padding: 10px 25px 10px 25px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    font-size: 30px;
+}
+
+#add {
+    float: right;
+    margin-top: 50px;
+    font-family: 'hamburgerheavenregular';
+}
+
+hr {
+    background-color: transparent;
+    border-bottom: 2px solid /* ratpack blue */#4e718a;
+    border-top: 1px solid #a28c13;
+    float: left;
+    display: inline-block;
+    width: 890px;
+    margin: 10px auto 0 auto;
+    padding: 0;
+}
+
+ul.photo-row {
+    margin: 0 auto;
+    padding: 20px 0 0 0;
+    list-style-type: none;
+    float: left;
+    max-width: 900px;
+}
+
+ul.photo-row li {
+    display: inline-block;
+    float: left;
+    width: 270px;
+    height: 275px;
+    margin: 0 10px 10px 0;
+    border: 10px solid #fff;
+    border-radius: 10px;
+}
+
+ul.photo-row li img {
+    max-width: 100%;
+    max-height: 100%;
+}

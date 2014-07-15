@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="css/fonts/hamburgerheaven/style.css" rel="stylesheet">
+  <link href="css/ratpack.css" rel="stylesheet">
+</head>
+<body>
+<div class="jumbotron">
+  <div class="container">
+    <div class="logo"></div>
+    <div class="controls">
+      <a href="#" class="btn" id="add">Add Photo</a>
+    </div>
+    <div class="ratpack-three"></div>
+    <hr>
+    <ul class="photo-row">
+
+    </ul>
+  </div>
+</div>
+<div class="hidden">
+  <form action="api" method="post" enctype="multipart/form-data" id="form">
+    <input type="file" name="photo" id="photo">
+    <input type="submit">
+  </form>
+</div>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
