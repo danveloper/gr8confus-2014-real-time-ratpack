@@ -5,6 +5,15 @@ ratpack {
   handlers {
 
     handler {
+      if (request.headers.'User-Agent' ==~ /.*Chrome.*/) {
+        response.status 418
+        response.send 'text/html', "<h1>You're not welcome here, Chrome.</h1>"
+      } else {
+        next()
+      }
+    }
+
+    handler {
       byMethod {
 
         get {

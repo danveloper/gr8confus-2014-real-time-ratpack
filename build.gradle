@@ -12,4 +12,9 @@ apply plugin: 'idea'
 
 repositories {
   jcenter()
+  maven { url "http://repo.spring.io/repo" }
+}
+
+dependencies {
+  springloaded 'org.springsource.loaded:springloaded:1.1.5.RELEASE'
 }
