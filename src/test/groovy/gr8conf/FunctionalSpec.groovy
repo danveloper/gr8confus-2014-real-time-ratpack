@@ -14,19 +14,4 @@ class FunctionalSpec extends Specification {
   @Delegate TestHttpClient testHttpClient = TestHttpClients.testHttpClient(aut, { RequestSpecification spec ->
     spec.header(new Header("Accept", "text/html"))
   })
-  RemoteControl remoteControl = new RemoteControl(aut)
-
-  void "should get photo bytes back from call to get/:id"() {
-    setup:
-      def id = remoteControl.exec {
-        get(PhotoService).save([1, 2, 3] as byte[])
-      }
-
-    when:
-      def resp = get("api/$id").andReturn()
-
-    then:
-      resp.statusCode == 200
-      resp.body.asByteArray() == [1, 2, 3]
-  }
 }

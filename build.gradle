@@ -21,7 +21,9 @@ dependencies {
   testCompile "org.spockframework:spock-core:0.7-groovy-2.0", {
     exclude module: "groovy-all"
   }
+  compile ratpack.dependency("remote")
   testCompile ratpack.dependency("remote-test")
+  testCompile 'org.java-websocket:Java-WebSocket:1.3.0'
 }
 
 configurations.testCompile.dependencies.find { it.name == "ratpack-groovy-test" }.exclude(group: "org.codehaus.groovy")
