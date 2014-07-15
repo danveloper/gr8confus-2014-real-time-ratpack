@@ -12,6 +12,7 @@ apply plugin: 'idea'
 
 repositories {
   jcenter()
+  maven { url 'http://oss.jfrog.org/artifactory/repo' }
   maven { url "http://repo.spring.io/repo" }
 }
 
@@ -20,5 +21,7 @@ dependencies {
   testCompile "org.spockframework:spock-core:0.7-groovy-2.0", {
     exclude module: "groovy-all"
   }
+  testCompile ratpack.dependency("remote-test")
 }
 
+configurations.testCompile.dependencies.find { it.name == "ratpack-groovy-test" }.exclude(group: "org.codehaus.groovy")

@@ -2,6 +2,7 @@ import gr8conf.DiskBackedPhotoService
 import gr8conf.InMemoryPhotoService
 import gr8conf.PhotoService
 import ratpack.form.Form
+import ratpack.remote.RemoteControlModule
 
 
 import static groovy.json.JsonOutput.toJson
@@ -12,6 +13,7 @@ ratpack {
   bindings {
     //bind PhotoService, new DiskBackedPhotoService()
     bind PhotoService, new InMemoryPhotoService()
+    add new RemoteControlModule()
   }
 
   handlers {
