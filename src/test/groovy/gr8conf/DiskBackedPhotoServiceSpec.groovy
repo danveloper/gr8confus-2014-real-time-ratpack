@@ -5,7 +5,8 @@ import spock.lang.Subject
 
 class DiskBackedPhotoServiceSpec extends Specification {
 
-  @Subject service = new DiskBackedPhotoService()
+  @Subject
+      service = new DiskBackedPhotoService()
 
   void "should write photo bytes to temp dir on disk"() {
     setup:

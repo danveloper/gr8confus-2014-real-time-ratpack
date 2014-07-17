@@ -1,7 +1,7 @@
 var App = {
     context: "default",
 
-    initNewPhoto: function() {
+    initNewPhoto: function () {
         var $photo = $("#photo");
 
         $("#add").click(function (e) {
@@ -25,24 +25,24 @@ var App = {
         });
     },
 
-    initWebSockets: function() {
+    initWebSockets: function () {
         var photoRow = document.querySelector("ul.photo-row");
 
         if (!window.ws || window.ws.readyState != WebSocket.OPEN) {
-            window.ws = new WebSocket("ws://"+location.host+"/ws/"+App.context);
+            window.ws = new WebSocket("ws://" + location.host + "/ws/" + App.context);
 
-            window.ws.onopen = function(event) {
+            window.ws.onopen = function (event) {
                 console.log("WebSocket opened!");
             };
-            window.ws.onmessage = function(event) {
+            window.ws.onmessage = function (event) {
                 var li = document.createElement("li");
                 var img = document.createElement("img");
-                img.src = "/api/"+event.data;
+                img.src = "/api/" + event.data;
                 li.appendChild(img);
                 photoRow.appendChild(li);
             };
-            window.ws.onclose = function(event) {
-                var timer = setTimeout(function() {
+            window.ws.onclose = function (event) {
+                var timer = setTimeout(function () {
                     console.log("Retrying connection...");
                     App.initWebSockets();
                     if (window.ws.readyState == WebSocket.OPEN) {
@@ -53,19 +53,19 @@ var App = {
         }
     },
 
-    initContextChanger: function() {
+    initContextChanger: function () {
         var $context = $("#context");
-        $context.change(function(e) {
+        $context.change(function (e) {
             App.context = $context.val();
             window.ws.close();
         })
     },
 
-    setContext: function(context) {
+    setContext: function (context) {
         $("#wsContext").val(App.context);
     },
 
-    init: function() {
+    init: function () {
         App.initContextChanger();
         App.initNewPhoto();
         App.initWebSockets();

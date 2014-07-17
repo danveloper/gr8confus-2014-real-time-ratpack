@@ -5,7 +5,8 @@ import spock.lang.Subject
 
 class InMemoryPhotoServiceSpec extends Specification {
 
-  @Subject service = new InMemoryPhotoService()
+  @Subject
+      service = new InMemoryPhotoService()
 
   void "should auto-generate unique photo id"() {
     setup:

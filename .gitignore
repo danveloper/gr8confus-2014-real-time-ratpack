@@ -7,3 +7,4 @@ build/
 *.iws
 .idea/
 *.hprof
+src/ratpack/activemq-data/
