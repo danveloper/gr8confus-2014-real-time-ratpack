@@ -21,11 +21,12 @@ ratpack {
     prefix("api") {
       post { PhotoService photoService, EventBroadcaster broadcaster ->
         def form = parse(Form)
+        def wsContext = form.context as String
         def photo = form.file("photo")
         def id = photoService.save(photo.bytes)
 
         // broadcast the new photo
-        broadcaster.broadcast id
+        broadcaster.broadcast "ws/$wsContext", id
 
         byContent {
           json {
@@ -43,16 +44,8 @@ ratpack {
       }
     }
 
-    get("ws") { EventBroadcaster broadcaster ->
-      websocket(context) { ws ->
-        broadcaster.register {
-          ws.send(it)
-        }
-      } connect {
-        it.onClose {
-          it.openResult.close()
-        }
-      }
+    get("ws/:wsContext") { EventBroadcaster broadcaster ->
+      broadcaster.register context
     }
 
     assets "public", "index.html"

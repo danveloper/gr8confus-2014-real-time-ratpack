@@ -9,6 +9,12 @@
   <div class="container">
     <div class="logo"></div>
     <div class="controls">
+      <select id="context">
+        <option value="default" selected>Default</option>
+        <option value="cats">Cats</option>
+        <option value="dogs">Dogs</option>
+        <option value="screenshots">Screenshots</option>
+      </select>
       <a href="#" class="btn" id="add">Add Photo</a>
     </div>
     <div class="ratpack-three"></div>
@@ -21,6 +27,7 @@
 <div class="hidden">
   <form action="api" method="post" enctype="multipart/form-data" id="form">
     <input type="file" name="photo" id="photo">
+    <input type="text" name="context" id="wsContext">
     <input type="submit">
   </form>
 </div>

@@ -1,4 +1,6 @@
 var App = {
+    context: "default",
+
     initNewPhoto: function() {
         var $photo = $("#photo");
 
@@ -8,6 +10,7 @@ var App = {
         });
 
         $photo.change(function (e) {
+            App.setContext(App.context);
             var fd = new FormData(document.getElementById("form"));
             $.ajax({
                 url: '/api',
@@ -26,7 +29,7 @@ var App = {
         var photoRow = document.querySelector("ul.photo-row");
 
         if (!window.ws || window.ws.readyState != WebSocket.OPEN) {
-            window.ws = new WebSocket("ws://"+location.host+"/ws");
+            window.ws = new WebSocket("ws://"+location.host+"/ws/"+App.context);
 
             window.ws.onopen = function(event) {
                 console.log("WebSocket opened!");
@@ -50,7 +53,20 @@ var App = {
         }
     },
 
+    initContextChanger: function() {
+        var $context = $("#context");
+        $context.change(function(e) {
+            App.context = $context.val();
+            window.ws.close();
+        })
+    },
+
+    setContext: function(context) {
+        $("#wsContext").val(App.context);
+    },
+
     init: function() {
+        App.initContextChanger();
         App.initNewPhoto();
         App.initWebSockets();
     }
