@@ -19,10 +19,14 @@ ratpack {
   handlers {
 
     prefix("api") {
-      post { PhotoService photoService ->
+      post { PhotoService photoService, EventBroadcaster broadcaster ->
         def form = parse(Form)
         def photo = form.file("photo")
         def id = photoService.save(photo.bytes)
+
+        // broadcast the new photo
+        broadcaster.broadcast id
+
         byContent {
           json {
             response.send toJson([name: id])
@@ -37,12 +41,6 @@ ratpack {
           response.send("image/png", photo)
         }
       }
-    }
-
-    get("broadcast") { EventBroadcaster broadcaster ->
-      def message = request.queryParams.msg
-      broadcaster.broadcast message
-      response.send()
     }
 
     get("ws") { EventBroadcaster broadcaster ->
